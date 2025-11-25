@@ -37,12 +37,12 @@ print(df['defects'].value_counts(normalize=True) * 100)
 
 
 #create plot figure for class distribution
-plt.figure(figsize=(6,4))
-sns.countplot(x='defects', data=df)
-plt.title("Defective vs Non-Defective Modules")
-plt.tight_layout()  
-plot_path = os.path.join(RESULTS_PATH, "class_distribution.png")
-plt.savefig(plot_path)
-plt.close()
+plt.figure(figsize=(6,4)) #setting width and height of the plot
+sns.countplot(x='defects', data=df) #countplot to show class distribution setting defects column on x-axis
+plt.title("Defective vs Non-Defective Modules") #title of the plot
+plt.tight_layout()  #adjust layout to prevent clipping of labels
+plot_path = os.path.join(RESULTS_PATH, "01_class_distribution.png") #path to save the plot
+plt.savefig(plot_path) #save the plot
+plt.close() #close the plot to free memory
 
 print(f"Class distribution plot saved to {plot_path}")
