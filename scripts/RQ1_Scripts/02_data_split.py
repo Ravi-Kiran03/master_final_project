@@ -4,6 +4,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import joblib
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..', '..'))
@@ -62,3 +65,22 @@ y_test.to_csv(os.path.join(RESULTS_PATH, 'y_test.csv'), index=False)
 joblib.dump(scaler, os.path.join(RESULTS_PATH, 'scaler.pkl'))
 
 print(f"\nSaved to {RESULTS_PATH}")
+
+
+# Plot class distribution in training set
+plt.figure(figsize=(6,4))
+sns.countplot(x=y_train)
+plt.title("Training Set Class Distribution Before SMOTE")
+plt.xlabel("Defective (True) vs Non-Defective (False)")
+plt.ylabel("Count")
+plt.savefig(os.path.join(RESULTS_PATH, "02_class_distribution_train_set.png"))
+plt.close()
+
+# Plot class distribution in testing set
+plt.figure(figsize=(6,4))
+sns.countplot(x=y_test)
+plt.title("Testing Set Class Distribution")
+plt.xlabel("Defective (True) vs Non-Defective (False)")
+plt.ylabel("Count")
+plt.savefig(os.path.join(RESULTS_PATH, "02_class_distribution_test_set.png"))
+plt.close()
