@@ -53,3 +53,14 @@ plt.savefig(os.path.join(RESULTS_PATH, 'confusion_matrix_test.png'))
 plt.close()
 
 print(f"Confusion matrix saved to {RESULTS_PATH}")
+
+# Class-wise performance
+from sklearn.metrics import classification_report
+
+report = classification_report(
+    y_test, 
+    y_pred, 
+    target_names=['Non-Defective', 'Defective']
+)
+print("Class-wise Performance:\n")
+print(report)
