@@ -1,0 +1,7 @@
+Model Performance on Test Data
+-----------------------------------
+Accuracy:  0.8626
+Precision: 0.5493
+Recall:    0.6000
+F1-score:  0.5735
+AUC:       0.8369

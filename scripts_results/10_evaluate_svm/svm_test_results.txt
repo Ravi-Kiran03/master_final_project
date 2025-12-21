@@ -1,0 +1,17 @@
+SVM Model Evaluation on Test Data
+-----------------------------------
+Accuracy:  0.7062
+Precision: 0.2993
+Recall:    0.6769
+F1-score:  0.4151
+AUC:       0.7721
+
+Classification Report
+               precision    recall  f1-score   support
+
+Non-Defective       0.92      0.71      0.80       357
+    Defective       0.30      0.68      0.42        65
+
+     accuracy                           0.71       422
+    macro avg       0.61      0.69      0.61       422
+ weighted avg       0.83      0.71      0.74       422
