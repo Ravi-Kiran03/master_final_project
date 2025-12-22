@@ -21,6 +21,7 @@ RF_RESULTS = os.path.join(RESULTS_ROOT, '08_evaluate_missing_data', 'missingness
 SVM_RESULTS = os.path.join(RESULTS_ROOT, '11_evaluate_missing_data_svm', 'missingness_results_svm.csv')
 
 OUTPUT_PLOT = os.path.join(RESULTS_PATH, 'comparison_missingness_performance_full.png')
+OUTPUT_CSV = os.path.join(RESULTS_PATH, 'comparison_missingness_table.csv')
 
 
 # Load result files
@@ -30,9 +31,50 @@ df_svm = pd.read_csv(SVM_RESULTS)
 
 missing_levels = df_rf['missingness_pct']
 
+#CSV
+
+comparison_data = []
+
+for i, pct in enumerate(missing_levels):
+    row = {
+        "Missingness (%)": pct,
+        "RF Accuracy": df_rf.loc[i, 'accuracy'],
+        "SVM Accuracy": df_svm.loc[i, 'accuracy'],
+        "RF F1": df_rf.loc[i, 'f1_score'],
+        "SVM F1": df_svm.loc[i, 'f1_score'],
+        "RF Precision": df_rf.loc[i, 'precision'],
+        "SVM Precision": df_svm.loc[i, 'precision'],
+        "RF Recall": df_rf.loc[i, 'recall'],
+        "SVM Recall": df_svm.loc[i, 'recall'],
+    }
+
+    desc = []
+    if df_rf.loc[i, 'accuracy'] > df_svm.loc[i, 'accuracy']:
+        desc.append("RF more robust")
+    elif df_rf.loc[i, 'accuracy'] < df_svm.loc[i, 'accuracy']:
+        desc.append("SVM more robust")
+    else:
+        desc.append("Similar accuracy")
+
+    if df_rf.loc[i, 'f1_score'] > df_svm.loc[i, 'f1_score']:
+        desc.append("RF better F1")
+    elif df_rf.loc[i, 'f1_score'] < df_svm.loc[i, 'f1_score']:
+        desc.append("SVM better F1")
+
+    if pct >= 30:
+        desc.append("Performance drops at high missingness")
+
+    row["Description"] = "; ".join(desc)
+    comparison_data.append(row)
+
+df_comparison = pd.DataFrame(comparison_data)
+df_comparison.to_csv(OUTPUT_CSV, index=False)
+
+print("\nComparison table saved:")
+print(OUTPUT_CSV)
+
 
 # Plot
-
 plt.figure(figsize=(10, 7))
 
 # ---- Accuracy ----
