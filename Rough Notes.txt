@@ -1,5 +1,0 @@
-Check where to implement tables
-Citation , in text references, bibiolgraphy
-code snippets
-comments to code in git
-what question i will get from each script

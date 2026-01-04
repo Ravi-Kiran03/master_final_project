@@ -104,7 +104,7 @@ fig, ax = plt.subplots(figsize=(10,7))
 im = ax.imshow(cm, cmap='Blues')
 
 # Title
-ax.set_title("Confusion Matrix on Test Set", fontsize=14)
+ax.set_title("Random Forest Confusion Matrix - Test Set", fontsize=14)
 
 # Tick labels
 ax.set_xticks(np.arange(len(labels_with_totals)))

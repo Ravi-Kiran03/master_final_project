@@ -106,7 +106,7 @@ cell_text = [
 # Create figure
 fig, ax = plt.subplots(figsize=(8,6))
 im = ax.imshow(cm, interpolation='nearest', cmap='Blues')
-plt.colorbar(im, ax=ax)
+#plt.colorbar(im, ax=ax)
 
 # Set ticks and labels
 ax.set_xticks(np.arange(len(classes)))
@@ -120,8 +120,8 @@ for i in range(cm.shape[0]):
         ax.text(j, i, cell_text[i][j], ha="center", va="center", color="black", fontsize=10)
 
 # Axis labels and title
-ax.set_xlabel("Predicted Label")
-ax.set_ylabel("Actual Label")
+ax.set_xlabel("Predicted")
+ax.set_ylabel("Actual")
 ax.set_title("SVM Confusion Matrix - Test Data")
 
 plt.tight_layout()

@@ -37,7 +37,7 @@ print("Target shape:", y.shape)
 print("\nClass distribution in full dataset:")
 print(y.value_counts())
 
-# Train-test split (70/30)
+# Train-test split (80/20)
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
@@ -77,7 +77,7 @@ plt.figure(figsize=(6,4))
 ax = sns.countplot(x=y_train)
 
 # Title
-plt.title("Training Set Class Distribution Before SMOTE")
+plt.title("Training Set Class Distribution")
 
 # Rename x-axis labels
 ax.set_xticklabels(['Non-Defective', 'Defective'])

@@ -1,0 +1,16 @@
+SHAP Global Feature Importance (Random Forest)
+Positive class: Defective (class 1)
+=============================================
+
+Top 10 features by mean(|SHAP|):
+
+01. uniq_Opnd: 0.040301
+02. total_Opnd: 0.038738
+03. n: 0.035259
+04. b: 0.031717
+05. v: 0.028074
+06. loc: 0.027719
+07. lOCode: 0.026521
+08. total_Op: 0.024213
+09. i: 0.023808
+10. lOBlank: 0.021003
